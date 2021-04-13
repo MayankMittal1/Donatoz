@@ -66,3 +66,11 @@ def dashboard(request):
         return render(request,'templates/dashboard.html',{'instance':organization,'transactions':transanctions})
     else:
         return redirect('/index')
+
+def home(request):
+    if request.session.has_key('email'):
+        user=get_object_or_404(User,email=request.session["email"])
+        transanctions=Transaction.objects.filter(user=user).order_by('-timestamp')
+        return render(request,'templates/dashboard.html',{'instance':user,'transactions':transanctions})
+    else:
+        return redirect('/index')
