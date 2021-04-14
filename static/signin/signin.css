@@ -1,3 +1,6 @@
+body{
+    margin: 0 auto;
+}
 .main {
     position:absolute;
     top:0;
@@ -9,8 +12,8 @@
 }
 .register{
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-    margin-top: 0%;
     padding: 3%;
+    height: 100vh;
 }
 .register-left{
     text-align: center;
@@ -35,7 +38,7 @@
     border-bottom-left-radius: 10% 50%;
 }
 .register-left img{
-    margin-top: 40%;
+    margin-top: 15%;
     margin-bottom: 5%;
     width: 25%;
     -webkit-animation: mover 2s infinite  alternate;
@@ -81,11 +84,8 @@
 .register .nav-tabs .nav-link:hover{
     border: none;
 }
-.register-right{
-    margin-top: 3%;
-}
 .register .nav-tabs .nav-link.active{
-    width: 100px;
+    width: calc(100%+10px);
     color: #0062cc;
     border: 2px solid #0062cc;
     border-top-left-radius: 1.5rem;

@@ -9,7 +9,8 @@ class Organization(models.Model):
     email=models.EmailField(unique=True)
     name=models.CharField(max_length=50)
     password=models.CharField(max_length=50)
-    description=models.TextField()
+    address=models.TextField(blank=True)
+    pincode=models.CharField(max_length=10,blank=True)
     image=models.ImageField(upload_to='profile_image_organization/',null=True, blank=True, default='userdefault.png')
     balance=models.PositiveIntegerField(default=0)
     phonenumber=models.CharField(max_length=12)
@@ -23,6 +24,8 @@ class User(models.Model):
     image=models.ImageField(upload_to='profile_image_user/',null=True, blank=True, default='userdefault.png')
     donated=models.PositiveIntegerField(default=0)
     phonenumber=models.CharField(max_length=12)
+    gender=models.TextField(blank=True)
+    dob=models.TextField(blank=True)
     organizations=models.ManyToManyField(Organization,related_name="organization")
 
 class Transaction(models.Model):
