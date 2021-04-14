@@ -1,7 +1,9 @@
 from .models import Organization, Transaction, User
 from django.http.response import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
-
+from xhtml2pdf import pisa
+import os
+from django.template.loader import get_template
 # Create your views here.
 def index(request):
     return render(request, 'templates/index.html')

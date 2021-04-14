@@ -18,7 +18,6 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from donate import views
-from agora.views import Agora
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index', views.index),
@@ -28,10 +27,7 @@ urlpatterns = [
     path('login_check_0', views.login_organization,name="login_organization"),
     path('register_u', views.registerUser,name="register_user"),
     path('register_o', views.registerOrganization,name="register_organization"),
-        path('agora/',Agora.as_view(
-    app_id='<APP_ID>',
-    channel='<CHANNEL_ID>'))
-
+    
 ]
 if settings.DEBUG:
      urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
