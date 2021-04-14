@@ -73,7 +73,7 @@ def dashboard(request):
         organization=get_object_or_404(Organization,email=request.session["email"])
         transanctions=Transaction.objects.filter(organization=organization).order_by('-timestamp')
         return render(request,'templates/dashboard.html',{'instance':organization,'transactions':transanctions})
-
+        
     elif request.session.has_key('email') and request.session['type']=='user':
         user=get_object_or_404(User,email=request.session["email"])
         transanctions=Transaction.objects.filter(user=user).order_by('-timestamp')
