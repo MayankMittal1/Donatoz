@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
 
-    <link rel="stylesheet" href="icon-font.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'main/icon-font.css' %}">
+    <link rel="stylesheet" href="{% static 'main/style.css' %}">
     <script src="https://kit.fontawesome.com/4ec9fc748c.js" crossorigin="anonymous"></script>
-    <title>Home</title>
+    <title>Donatoz</title>
 
 </head>
 
@@ -20,8 +20,8 @@
         <div class="logo-box">
             <h3>DONATOZ</h3>
             <div>
-                <a href="#" class="btn btn-white sign-up"><b>Login</b></a>
-                <a href="#" class="btn btn-white sign-up"><b>Sign Up</b></a>
+                <a href="/login" class="btn btn-white sign-up"><b>Login</b></a>
+                <a href="/signup" class="btn btn-white sign-up"><b>Sign Up</b></a>
             </div>
         </div>
         <div class="textbox">
@@ -30,7 +30,7 @@
                 ones we’ve been
                 waiting for. We are the change that we seek.”
             </h1>
-            <a href="#" class="btn btn-white">Donate <span style="color:red">Now!</span></a>
+            <a href="/home" class="btn btn-white">Donate <span style="color:red">Now!</span></a>
         </div>
     </header>
 
@@ -53,9 +53,9 @@
                 </div>
                 <div class="col-1-of-2">
                     <div class="composition">
-                        <img src="./img1.jpeg" alt="Photo1" class="composition__photo composition__photo--p1">
-                        <img src="./img2.jpeg" alt="Photo2" class="composition__photo composition__photo--p2">
-                        <img src="./img3.jpeg" alt="Photo3" class="composition__photo composition__photo--p3">
+                        <img src="{% static 'main/img1.jpeg' %}" alt="Photo1" class="composition__photo composition__photo--p1">
+                        <img src="{% static 'main/img2.jpeg' %}" alt="Photo2" class="composition__photo composition__photo--p2">
+                        <img src="{% static 'main/img3.jpeg' %}" alt="Photo3" class="composition__photo composition__photo--p3">
                     </div>
                 </div>
             </div>

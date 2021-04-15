@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate</title>
+    <style>
+        body{
+            margin: 0 auto;
+            height: 1060px;
+            width: 1500px;
+        }
+        .image{
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .main{
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+        }
+        .name{
+            text-align: center;
+            display: flex;
+            min-width: 100px;
+            height: 100px;
+            margin-top: 470px;
+            position: absolute;
+            z-index: 5;
+            left: 50%;
+            justify-content: center;
+            transform: translateX(-50%);
+        }
+        .organization{
+            text-align: center;
+            display: flex;
+            min-width: 100px;
+            height: 100px;
+            margin-top: 700px;
+            position: absolute;
+            z-index: 5;
+            left: 50%;
+            justify-content: center;
+            transform: translateX(-50%);
+        }
+        .organization p{
+            font-size: 20px;
+        }
+        .name p{
+            font-size: 50px; 
+                   }
+    </style>
+</head>
+<body onload="window_print()">
+    <div class="main">
+        <img src="{% static 'certificate/cer.png' %}" alt="" class="image">
+        <div class="name">
+            <p>{{instance.user.firstName}}&nbsp;{{instance.user.lastName}}</p>
+        </div>
+        <div class="organization">
+            <p>{{instance.organization.name}}</p>
+        </div>
+    </div>
+</body>
+<script>
+    function window_print(){
+        window.print();
+    };
+</script>
+</html>
