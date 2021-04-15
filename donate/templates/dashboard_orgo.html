@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-
+{% load static %}
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="dashboard_orgo.css">
+    <link rel="stylesheet" href="{%static 'organisation_dashboard/style.css' %}">
 
     <title>Dashboard</title>
 </head>
@@ -34,12 +34,14 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="./profile.jpg" width="40" height="40" class="rounded-circle">
+                                {% if instance.image %}
+                                <img src="{{instance.image.url}}" width="40" height="40" class="rounded-circle">
+                                {% endif %}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Dashboard</a>
-                                <a class="dropdown-item" href="#">Edit Profile</a>
-                                <a class="dropdown-item" href="#">Log Out</a>
+                                <a class="dropdown-item" href="/dashboard">Dashboard</a>
+                                <a class="dropdown-item" href="/profile">Edit Profile</a>
+                                <a class="dropdown-item" href="/logout">Log Out</a>
                             </div>
                         </li>
                     </ul>
@@ -114,75 +116,29 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {% for transaction in transactions %}
                             <tr>
-                                <td class="sno">1.</td>
-                                <td class="ta">Donation</td>
+                                <td class="sno">{{transaction.id}}</td>
+                                <td class="ta">{% if transaction.type == "credit" %} Donation {% else %} Expenditure {% endif %}</td>
                                 <td>
                                     <strong class="orgo"></strong>
                                 </td>
                                 <td>
-                                    <strong class="orgo">Abhinav</strong>
+                                    <strong class="orgo">{% if transaction.user %} {{transaction.user.firstName}} {% endif %}</strong>
                                 </td>
-                                <td class="phn">+91 1234567891</td>
-                                <td class="date">15-05-2021</td>
-                                <td class="time">06:00:00</td>
-                                <td class="deb"></td>
-                                <td class="cred">10000.00</td>
+                                <td class="phn">{% if transaction.user %} {{transaction.user.phonenumber}} {% endif %}</td>
+                                <td class="date">{{transaction.timestamp.date}}</td>
+                                <td class="time">{{transaction.timestamp.time}}</td>
+                                <td class="deb">{% if transaction.type == "credit" %}{% else %} {{transaction.amount}} {% endif %}</td>
+                                <td class="cred">{% if transaction.type == "credit" %} {{transaction.amount}}{% endif %}</td>
                                 <td class="lin"><a href="#" target="_blank"></a></td>
                             </tr>
-                            <tr>
-                                <td class="sno">2.</td>
-                                <td class="ta">Expenditure</td>
-                                <td>
-                                    <strong class="orgo">Toilet Papers</strong>
-                                </td>
-                                <td>
-                                    <strong class="orgo"></strong>
-                                </td>
-                                <td class="phn"></td>
-                                <td class="date">15-05-2021</td>
-                                <td class="time">06:00:00</td>
-                                <td class="deb">500.00</td>
-                                <td class="cred"></td>
-                                <td class="lin"><a href="#" target="_blank">click here</a></td>
-                            </tr>
-                            <tr>
-                                <td class="sno">3.</td>
-                                <td class="ta">Expenditure</td>
-                                <td>
-                                    <strong class="orgo">Vegitables</strong>
-                                </td>
-                                <td>
-                                    <strong class="orgo"></strong>
-                                </td>
-                                <td class="phn"></td>
-                                <td class="date">15-05-2021</td>
-                                <td class="time">06:00:00</td>
-                                <td class="deb">500.00</td>
-                                <td class="cred"></td>
-                                <td class="lin"><a href="#" target="_blank">click here</a></td>
-                            </tr>
-                            <tr>
-                                <td class="sno">4.</td>
-                                <td class="ta">Donation</td>
-                                <td>
-                                    <strong class="orgo"></strong>
-                                </td>
-                                <td>
-                                    <strong class="orgo">Abhinav</strong>
-                                </td>
-                                <td class="phn">+91 1234567891</td>
-                                <td class="date">15-05-2021</td>
-                                <td class="time">06:00:00</td>
-                                <td class="deb"></td>
-                                <td class="cred">10000.00</td>
-                                <td class="lin"><a href="#" target="_blank"></a></td>
-                            </tr>
+                            {% endfor %}
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="7">Total</td>
-                                <td>19000.00</td>
+                                <td colspan="7"> Current Balance</td>
+                                <td>{{instance.balance}}</td>
                             </tr>
                         </tfoot>
                     </table>
@@ -191,7 +147,7 @@
             </div>
         </div>
         <div class="textbox">
-            <a href="#" class="btn btn-white">Add Expenditures/Donations</a>
+            <a href="/transactions/add" class="btn btn-white">Add Expenditures/Donations</a>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"

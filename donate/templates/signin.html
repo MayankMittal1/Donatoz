@@ -121,9 +121,8 @@
             type: 'POST',
             data: formData,
             success: function (response) {
-                
               if(response.login=="1"){
-                alert("yes")
+                window.location = "{% url 'dashboard' %}"
               }
 			  else{
 			  alert(response.message)

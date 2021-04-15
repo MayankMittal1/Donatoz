@@ -76,12 +76,7 @@ def dashboard(request):
     if request.session.has_key('email') and request.session['type']=='organization':
         organization=get_object_or_404(Organization,email=request.session["email"])
         transanctions=Transaction.objects.filter(organization=organization).order_by('-timestamp')
-        return render(request,'templates/dashboard.html',{'instance':organization,'transactions':transanctions})
-        
-    elif request.session.has_key('email') and request.session['type']=='user':
-        user=get_object_or_404(User,email=request.session["email"])
-        transanctions=Transaction.objects.filter(user=user).order_by('-timestamp')
-        return render(request,'templates/dashboard.html',{'instance':user,'transactions':transanctions})
+        return render(request,'dashboard_orgo.html',{'instance':organization,'transactions':transanctions})
     else:
         return redirect('/index')
 
@@ -111,6 +106,8 @@ def transact(request,id):
         user=get_object_or_404(User,email=request.session["email"])
         organizations=Organization.objects.all()
         organization=get_object_or_404(Organization,id=id)
+        organization.balance=organization.balance+int(amount)
+        organization.save()
         Transaction.objects.create(type="credit",organization=organization,amount=amount,user=user)
         subject = 'Thank You for Donating'
         message = "Dear {},\n \n Thank you for your generous gift to {}. We are thrilled to have your support. Through your donation we have been able to accomplish our goal and continue working towards betterment of society. You truly make the difference for us, and we are extremely grateful!.\n If you have specific questions about how your gift is being used or our organization as whole, please don’t hesitate to contact us.\n\nSincerely,\n Donatoz".format(user.firstName,organization.name)
@@ -142,3 +139,10 @@ def logout(request):
         request.session.pop('email')
         request.session.pop('type')
     return redirect('/index')
+
+def addTransaction(request):
+    if request.session.has_key('email') and request.session['type']=='organization':
+        if request.method=="GET":
+            return render(request,'additem.html')
+    else:
+        return redirect('/index')

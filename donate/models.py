@@ -31,7 +31,8 @@ class User(models.Model):
 class Transaction(models.Model):
     id=models.AutoField(primary_key=True)
     type=models.CharField(max_length=10, null=False)
+    description=models.CharField(max_length=120, blank=True, null=True)
     amount=models.BigIntegerField(max_length=10)
     organization=models.ForeignKey(Organization,on_delete=CASCADE)
-    user=models.ForeignKey(User,on_delete=CASCADE)
+    user=models.ForeignKey(User,on_delete=CASCADE,null=True,blank=True)
     timestamp=models.DateTimeField(auto_now=True)

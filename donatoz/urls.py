@@ -30,9 +30,11 @@ urlpatterns = [
     path('register_o', views.registerOrganization,name="register_organization"),
     path('certificate/<str:id>/', views.render_pdf_view),
     path('home',views.home,name='home'),
+    path('dashboard',views.dashboard,name='dashboard'),
     path('donate',views.donate,name='donate'),
     path('donate/<str:id>/',views.transact,name='donate'),
     path('donate/search',views.searchOrganization,name='donate'),
+    path('transactions/add',views.addTransaction,name='add'),
 
 ]
 if settings.DEBUG:
