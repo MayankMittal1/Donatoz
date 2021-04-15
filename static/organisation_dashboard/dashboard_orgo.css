@@ -1,0 +1,172 @@
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	td:before { 
+		position: absolute;
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  color: #4a4a4d;
+  font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+}
+th,
+td {
+  padding: 10px 15px;
+  vertical-align: middle;
+}
+thead {
+  background: #395870;
+  background: linear-gradient(#49708f, #293f50);
+  color: #fff;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+th:first-child {
+  border-top-left-radius: 5px;
+  text-align: left;
+}
+th:last-child {
+  border-top-right-radius: 5px;
+}
+tbody tr:nth-child(even) {
+  background: #f0f0f2;
+}
+td {
+  border-bottom: 1px solid #cecfd5;
+  border-right: 1px solid #cecfd5;
+}
+td:first-child {
+  border-left: 1px solid #cecfd5;
+}
+.orgo {
+    text-align: center;
+  color: #395870;
+  display: block;
+}
+.text-offset {
+  color: #7c7c80;
+  font-size: 12px;
+}
+.date {
+  text-align: center;
+}
+.lin {
+  text-align: center;
+}
+.phn {
+  text-align: center;
+}
+.deb
+.cred {
+  text-align: center;
+  font-weight: bold;
+  color: #395870;
+}
+.item-multiple {
+  display: block;
+}
+tfoot {
+  text-align: right;
+}
+tfoot tr:last-child {
+  background: #f0f0f2;
+  color: #395870;
+  font-weight: bold;
+}
+tfoot tr:last-child td:first-child {
+  border-bottom-left-radius: 5px;
+}
+tfoot tr:last-child td:last-child {
+  border-bottom-right-radius: 5px;
+}
+  .textbox{
+      text-align: center;
+  }
+  .btn {
+    margin: auto; 
+    border: 0;
+    background: none;
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    border: 2px solid #3aa6ff;
+    padding: 14px;
+    outline: none;
+    color: rgb(0, 0, 0);
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer
+}
+.btn:hover {
+    background: #3aa6ff;
+}
+.heading{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.date:hover{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+.sno:hover{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+.ta:hover{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+.orgo:hover{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+.phn:hover{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+.time:hover{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+.deb:hover{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+.cred:hover{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+.lin:hover{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+
+.navbar-brand{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+.card-body{
+  text-align: center;
+}
+.card {
+   margin: 0 auto;
+   float: none;
+}
