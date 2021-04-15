@@ -22,12 +22,18 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('index', views.index),
     path('login', views.login),
+    path('logout', views.logout),
     path('signup', views.signup),
     path('login_check_u', views.login_user,name="login_user"),
     path('login_check_0', views.login_organization,name="login_organization"),
     path('register_u', views.registerUser,name="register_user"),
     path('register_o', views.registerOrganization,name="register_organization"),
-    
+    path('certificate/<str:id>/', views.render_pdf_view),
+    path('home',views.home,name='home'),
+    path('donate',views.donate,name='donate'),
+    path('donate/<str:id>/',views.transact,name='donate'),
+    path('donate/search',views.searchOrganization,name='donate'),
+
 ]
 if settings.DEBUG:
      urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
