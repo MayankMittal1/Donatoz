@@ -18,15 +18,16 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from donate import views
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index', views.index),
-    path('login', views.login_user,name="login_user"),
-    path('login', views.login_organization,name="login_organization"),
-    path('register', views.registerUser,name="register_user"),
-    path('register', views.registerOrganization,name="register_organization"),
-
+    path('login', views.login),
+    path('signup', views.signup),
+    path('login_check_u', views.login_user,name="login_user"),
+    path('login_check_0', views.login_organization,name="login_organization"),
+    path('register_u', views.registerUser,name="register_user"),
+    path('register_o', views.registerOrganization,name="register_organization"),
+    
 ]
 if settings.DEBUG:
      urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

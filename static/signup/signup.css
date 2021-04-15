@@ -11,6 +11,7 @@
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
     margin-top: 0%;
     padding: 3%;
+    height: 100vh;
 }
 .register-left{
     text-align: center;
@@ -108,7 +109,7 @@
     border: none;
 }
 .register .nav-tabs .nav-link.active{
-    width: 100px;
+    width: calc(100%+10px);
     color: #0062cc;
     border: 2px solid #0062cc;
     border-top-left-radius: 1.5rem;
