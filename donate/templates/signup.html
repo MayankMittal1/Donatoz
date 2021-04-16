@@ -103,6 +103,8 @@
                                         <input type="password" class="form-control" placeholder="Confirm Password *"
                                             value="" required/>
                                     </div>
+                                    <input type="file" accept=".jpg,.png,.jpeg" multiple name="image">
+                                    <p>Upload Image</p>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group fd">
@@ -184,6 +186,11 @@
             processData: false
         });
     });
+    $(document).ready(function () {
+            $('form input').change(function () {
+                $('form p').text(this.files.length + " file(s) selected");
+            });
+        });
     </script>
 
 

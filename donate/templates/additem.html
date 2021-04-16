@@ -26,47 +26,14 @@
                 <h4>Add Transactions</h4>
             </div>
             <div class='panel-body'>
-                <form class='form-horizontal' role='form'>
-                    <div class='form-group'>
-                        <label class='control-label col-md-2 col-md-offset-2' for='id_accomodation'>Label</label>
-                        <div class='col-md-2'>
-                            <select class='form-control' id='id_accomodation'>
-                                <option>Donation</option>
-                                <option>Expenditure</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class='form-group'>
-                        <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Name</label>
-                        <div class='col-md-8'>
-                            <div class='col-md-3 indent-small'>
-                                <div class='form-group internal'>
-                                    <input class='form-control' id='id_first_name' placeholder='First Name' type='text'>
-                                </div>
-                            </div>
-                            <div class='col-md-3 indent-small'>
-                                <div class='form-group internal'>
-                                    <input class='form-control' id='id_last_name' placeholder='Last Name' type='text'>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <form class='form-horizontal' role='form' method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
                     <div class='form-group'>
                         <label class='control-label col-md-2 col-md-offset-2' for='id_email'>Description</label>
                         <div class='col-md-6'>
                             <div class='form-group'>
                                 <div class='col-md-11'>
-                                    <input class='form-control' id='id_email' placeholder='Description' type='text'>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='form-group'>
-                        <label class='control-label col-md-2 col-md-offset-2' for='id_email'>Phone No.</label>
-                        <div class='col-md-6'>
-                            <div class='form-group'>
-                                <div class='col-md-11'>
-                                    <input class='form-control' id='id_phone' placeholder='Phone:' type='text'>
+                                    <input class='form-control' id='id_email' placeholder='Description' type='text' name="desc">
                                 </div>
                             </div>
                         </div>
@@ -76,28 +43,26 @@
                         <div class='col-md-8'>
                             <div class='col-md-2'>
                                 <div class='form-group internal'>
-                                    <select class='form-control' id='id_title'>
-                                        <option>Debit</option>
-                                        <option>Credit</option>
+                                    <select class='form-control' id='id_title' name="type">
+                                        <option value="debit">Debit</option>
+                                        <option value="credit">Credit</option>
                                     </select>
                                 </div>
                             </div>
                             <div class='col-md-3 indent-small'>
                                 <div class='form-group internal'>
-                                    <input class='form-control' id='id_first_name' placeholder='Amount' type='text'>
+                                    <input class='form-control' id='id_first_name' placeholder='Amount' type='text' name="amount">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class='form-group'>
                         <label class='control-label col-md-2 col-md-offset-2' for='id_comments'>Invoice</label>
-                        <form>
-                            <input type="file" multiple>
-                        </form>
+                            <input type="file" multiple name="image">
                     </div>
                     <div class='form-group'>
                         <div class='col-md-offset-4 col-md-3'>
-                            <button class='btn-lg btn-primary' type='submit'>ADD</button>
+                            <input class='btn-lg btn-primary' type='submit'>
                         </div>
                         <div class='col-md-3'>
                             <button class='btn-lg btn-danger' style='float:right' type='submit'>Cancel</button>

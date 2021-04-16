@@ -38,7 +38,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="/home">Dashboard</a>
-                                <a class="dropdown-item" href="/profile">Edit Profile</a>
+                                <a class="dropdown-item" href="/user/profile">Edit Profile</a>
                                 <a class="dropdown-item" href="logout">Log Out</a>
                             </div>
                         </li>
@@ -80,7 +80,7 @@
                                 </td>
                                 <td class="date">{{transaction.timestamp}}</td>
                                 <td class="donated">{{transaction.amount}}</td>
-                                <td class="lin"><a href="#" target="_blank">click here</a></td>
+                                <td class="lin"><a href="/view/{{transaction.organization.id}}" target="_blank">Click here</a></td>
                             </tr>
                             {% endfor %}
                             <tr>

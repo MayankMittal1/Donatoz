@@ -31,11 +31,18 @@ urlpatterns = [
     path('certificate/<str:id>/', views.render_pdf_view),
     path('home',views.home,name='home'),
     path('dashboard',views.dashboard,name='dashboard'),
+    path('dashboard/search',views.dashboardSearch,name='dashboardSearch'),
     path('donate',views.donate,name='donate'),
+    path('organization/profile',views.profileO,name='profileO'),
+    path('user/profile',views.profileD,name='profileD'),
     path('donate/<str:id>/',views.transact,name='donate'),
     path('donate/search',views.searchOrganization,name='donate'),
+    path('view/search/<str:id>',views.filter,name='filter'),
     path('transactions/add',views.addTransaction,name='add'),
-
+    path('updatePassword',views.updatePassword,name='updatePasswordo'),
+    path('updateProfileImage',views.updateProfileImage,name='updateProfileImage'),
+    path('updateInfo',views.updateInfo,name='updateInfo'),
+    path('view/<str:id>',views.viewEx)
 ]
 if settings.DEBUG:
      urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

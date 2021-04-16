@@ -11,6 +11,7 @@ class Organization(models.Model):
     password=models.CharField(max_length=50)
     address=models.TextField(blank=True)
     pincode=models.CharField(max_length=10,blank=True)
+    about=models.CharField(max_length=200, null=True)
     image=models.ImageField(upload_to='profile_image_organization/',null=True, blank=True, default='userdefault.png')
     balance=models.PositiveIntegerField(default=0)
     phonenumber=models.CharField(max_length=12)
@@ -36,3 +37,4 @@ class Transaction(models.Model):
     organization=models.ForeignKey(Organization,on_delete=CASCADE)
     user=models.ForeignKey(User,on_delete=CASCADE,null=True,blank=True)
     timestamp=models.DateTimeField(auto_now=True)
+    invoice=models.ImageField(upload_to='invoices/',null=True, blank=True)

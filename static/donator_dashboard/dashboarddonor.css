@@ -132,3 +132,31 @@ tfoot tr:last-child td:last-child {
     text-align: center;
     margin-top: 30px;
 }
+
+.date:hover{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+.sno:hover{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+.ta:hover{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+.orgo:hover{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+.phn:hover{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+.time:hover{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+.deb:hover{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+.cred:hover{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+.lin:hover{
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}

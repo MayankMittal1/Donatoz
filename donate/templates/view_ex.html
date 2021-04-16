@@ -12,8 +12,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'donator_dashboard/dashboarddonor.css'%}">
     <link rel="stylesheet" href="{%static 'organisation_dashboard/style.css' %}">
-
     <title>Dashboard</title>
 </head>
 
@@ -21,7 +21,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg-light bg-transparent">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/home">
                     DONATOZ
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -30,18 +30,16 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0" style="margin-right: 10%;">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {% if instance.image %}
                                 <img src="{{instance.image.url}}" width="40" height="40" class="rounded-circle">
-                                {% endif %}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="/dashboard">Dashboard</a>
-                                <a class="dropdown-item" href="/organization/profile">Edit Profile</a>
-                                <a class="dropdown-item" href="/logout">Log Out</a>
+                                <a class="dropdown-item" href="/home">Dashboard</a>
+                                <a class="dropdown-item" href="/user/profile">Edit Profile</a>
+                                <a class="dropdown-item" href="logout">Log Out</a>
                             </div>
                         </li>
                     </ul>
@@ -51,7 +49,7 @@
     </header>
     <div class="heading">
         <h3>
-            <u>Account Management</u>
+            <u>{{organization.name}} Expenses</u>
         </h3>
     </div>
     <div class="bg-white"><br>
@@ -59,7 +57,7 @@
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">Apply Filter</h5>
-                <p><form action="/dashboard/search">
+                <p><form action="/view/search/{{organization.id}}">
                     <select name="month">
                         <option hidden>Month</option>
                         <option value="1">01</option>
@@ -87,7 +85,7 @@
                     </select><br>
                 </p>
                 <input type="submit" class="card-link" value="Search">
-                <a href="/dashboard" class="card-link">Remove</a>
+                <a href="/view/{{organization.id}}" class="card-link">Remove</a>
             </div>
             </form>
         </div>
@@ -129,19 +127,10 @@
                             </tr>
                             {% endfor %}
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="7"> Current Balance</td>
-                                <td>{{instance.balance}}</td>
-                            </tr>
-                        </tfoot>
                     </table>
 
                 </div>
             </div>
-        </div>
-        <div class="textbox">
-            <a href="/transactions/add" class="btn btn-white">Add Expenditures/Donations</a>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
